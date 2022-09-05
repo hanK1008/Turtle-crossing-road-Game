@@ -9,11 +9,7 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 player = Player()
-
-cars= []
-for random_car in range(0, 100):
-    car_random_car = CarManager()
-    cars.append(car_random_car)
+car_manager = CarManager()
 
 screen.listen()
 screen.onkey(fun=player.move_up, key="Up")
@@ -23,12 +19,18 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    car= random.choice(cars)
-    car.move_car()
+    car_manager.create_car()
+    car_manager.move_car()
 
+# detecting collision
+    for car in car_manager.all_cars:
+        if player.distance(car) < 20:
+            game_is_on = False
 
-    # car = CarManager()
-
+# Leveling Up
+    if player.ycor() >= 270:
+        player.player_reset()
+        car_manager.next_level()
 
 
 screen.exitonclick()
