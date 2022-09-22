@@ -13,6 +13,7 @@ car_manager = CarManager()
 scoreboard = Scoreboard()
 scoreboard.update_level()
 
+
 screen.listen()
 screen.onkey(fun=player.move_up, key="Up")
 

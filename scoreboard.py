@@ -3,19 +3,23 @@ FONT = ("Courier", 24, "normal")
 
 
 class Scoreboard(Turtle):
+
     def __int__(self):
         super().__init__()
-        self.game_level = 1
+        self.score = 1
         self.color("black")
-        self.penup()
-        self.hideturtle()
-        self.update_level()
+        # self.update_level()
 
     def update_level(self):
         self.clear()
-        self.goto(250, 250)
-        self.write(arg=self.game_level, align="center", font=FONT)
-        self.game_level += 1
+        self.penup()
+        self.hideturtle()
+        self.goto(-220, 250)
+        # self.score += 1
+        self.write(f"Level: {self.score}", align="center", font=FONT)
+        self.score += 1
+        # self.level_no += 1
+        # self.level += 1
 
 
         #Work on attribute game_level its not working
